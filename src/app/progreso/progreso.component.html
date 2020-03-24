@@ -1,0 +1,36 @@
+<ActionBar>
+    <!--
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!--
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label text="Progreso del paciente"></Label>
+</ActionBar>
+
+<ListView [items]="progresos" iosEstimatedRowHeight="65">
+    <ng-template let-progreso="item" let-i="index">
+        <GridLayout rows="25,25">
+            <Label textWrap="true" row="0">
+                <FormattedString>
+                    <Span [text]="progreso.bloque"></Span>
+                </FormattedString>
+            </Label>
+            <Label  row="1">
+                <FormattedString>
+                    <Span text="Fecha: Del "></Span>
+                    <Span [text]="progreso.inicio"></Span>
+                    <Span text=" al "></Span>
+                    <Span [text]="progreso.fin"></Span>
+                </FormattedString>
+            </Label>
+        </GridLayout>
+    </ng-template>
+</ListView>

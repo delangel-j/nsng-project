@@ -1,0 +1,91 @@
+<ActionBar>
+    <!--
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!--
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label text="Reporte de diagnósticos"></Label>
+</ActionBar>
+
+<ScrollView>
+<StackLayout>
+<GridLayout rows="0,20,20,20" columns="40,50,auto" class='paciente'>
+    <Image row="1" col="1" class="nt-drawer__header-image fas t-36 p-t-5" src="font://&#xf2bd;"></Image>
+    <Label row="1" col="2" class="nt-drawer__header-brand" text="Francisco Santiago Morales Roa"></Label>
+    <Label row="2" col="2" class="nt-drawer__header-brand" text="Exp: 1659-09"></Label>
+    <Label row="3" col="2" class="nt-drawer__header-brand" text="5 años"></Label>
+</GridLayout>
+
+     <!-- Diagnostico / Collapse-->
+     <FlexboxLayout class="m-t-20 m-l-30" justifyContent="space-between"
+     alignItems="center" alignContent="center" >
+     <Label text="Diagnóstico"  class="title" (tap)="goCollapse($event)">
+     </Label>
+     <Image src="res://down" class="icon" [ngClass]='{ collapse: isCollapsed }' (tap)="goCollapse($event)"></Image>
+     </FlexboxLayout>
+            <ListView [items]="diagnosticos" [visibility]="showCollapseBox ? 'visible' : 'collapse'">
+                <ng-template let-diag="item">
+                    <StackLayout borderWidth="1">
+                        <Label class="diagnosticoLabel" [text]="diag.diagnostico1" row='0' col='1'></Label>
+                        <Label class="diagnosticoLabel" [text]="diag.diagnostico2" row="1" col="1"></Label>
+                        <Label class="diagnosticoLabel" [text]="diag.diagnostico3" row="1" col="1"></Label>
+                    </StackLayout>
+                </ng-template>
+            </ListView>
+
+         <!-- Terapia del lenguaje /Collapse -->
+    <FlexboxLayout class="m-t-20 m-l-30" justifyContent="space-between"
+      alignItems="center" alignContent="center">
+      <Label text="Terapia de lenguaje" (tap)="goCollapse2()" class="title">
+      </Label>
+      <Image src="res://down" class="icon" [ngClass]='{ collapse: isCollapsed2 }' (tap)="goCollapse2($event)"></Image>
+  </FlexboxLayout>
+       <ListView [items]="terapias" [visibility]= "showCollapseBox2 ? 'visible' : 'collapse'">
+        <ng-template let-ter="item" >
+            <StackLayout borderWidth="1">
+                <Label textWrap="true" [text]="ter.terapia1"></Label>
+                <Label textWrap="true" [text]="ter.terapia2"></Label>
+                <Label textWrap="true" [text]="ter.terapia3"></Label>
+                <Label textWrap="true" [text]="ter.terapia4"></Label>
+                <Label textWrap="true" [text]="ter.terapia5"></Label>
+            </StackLayout>
+        </ng-template>
+       </ListView>
+
+                 <!-- Educación especial /Collapse -->
+ <FlexboxLayout class="m-t-20 m-l-30" justifyContent="space-between"
+     alignItems="center" alignContent="center">
+     <Label text="Educación especial" (tap)="goCollapse3($event)" class="title">
+     </Label>
+     <Image src="res://down" class="icon" [ngClass]='{ collapse: isCollapsed3 }' (tap)="goCollapse3($event)"></Image>
+</FlexboxLayout>
+ <StackLayout borderWidth="1">
+     <Label text="Prueba" class="box pull-left"
+         [visibility]= "showCollapseBox3 ? 'visible' : 'collapse'">
+     </Label>
+ </StackLayout>
+                 <!-- Plan de trabajo /Collapse -->
+ <FlexboxLayout class="m-t-20 m-l-30" justifyContent="space-between"
+     alignItems="center" alignContent="center">
+     <Label text="Plan de trabajo" (tap)="goCollapse4($event)" class="title">
+     </Label>
+     <Image src="res://down" class="icon" [ngClass]='{ collapse: isCollapsed4 }' (tap)="goCollapse4($event)"></Image>
+</FlexboxLayout>
+<ListView [items]="planTrabajo" [visibility]= "showCollapseBox4 ? 'visible' : 'collapse'">
+    <ng-template let-plan="item" >
+        <StackLayout borderWidth="1">
+            <Label textWrap="true" [text]="plan.plan1"></Label>
+            <Label textWrap="true" [text]="plan.plan2"></Label>
+        </StackLayout>
+    </ng-template>
+   </ListView>
+</StackLayout>
+</ScrollView>

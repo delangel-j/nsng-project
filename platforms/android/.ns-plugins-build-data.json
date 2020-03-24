@@ -1,0 +1,22 @@
+{
+	"nativescript-ui-sidedrawer": {
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-sidedrawer\\platforms\\android\\TNSSideDrawer-release.aar": "e6e4d527ff85743c270768018b9ea720ec5b9dda",
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-sidedrawer\\platforms\\android\\typings\\sidedrawer.d.ts": "8256a2295125597755fe6a6faee866b0750e65f2"
+	},
+	"nativescript-ui-core": {
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-core\\platforms\\android\\typings\\core.d.ts": "5c032652edfa1719ef8c8190fc0f66d3b1c313c2",
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-core\\platforms\\android\\TNSCore-release.aar": "0e2fe0b867821ad56b8f0b9c8ac4c90f4c399e3c"
+	},
+	"tns-core-modules-widgets": {
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\tns-core-modules-widgets\\platforms\\android\\widgets-release.aar": "0746721bed98e833a85c066a1994200dd8dd111b"
+	},
+	"nativescript-ui-chart": {
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-chart\\platforms\\android\\include.gradle": "b86fa9eafbccd8683d2c21aa1f83308a4bbacf68",
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-chart\\platforms\\android\\typings\\chart.d.ts": "2e9ec66e1c78d2c282e84b49786b4050180f007b",
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-chart\\platforms\\android\\TNSChart-release.aar": "dfaf07dcf1a6cddd4ff98a52b81ba87fa3015e96"
+	},
+	"nativescript-ui-calendar": {
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-calendar\\platforms\\android\\typings\\calendar.d.ts": "31bf824396f956c7d699c50f72170ba00fdb5cd2",
+		"C:\\Users\\Jesus\\Documents\\Udemy\\angular-Front\\node_modules\\nativescript-ui-calendar\\platforms\\android\\TNSCalendar-release.aar": "3f4c4f7cf98e65d8a278b98835694a1997316420"
+	}
+}

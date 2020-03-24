@@ -1,0 +1,67 @@
+<ActionBar>
+    <!--
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!--
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label text="Reporte de citas"></Label>
+</ActionBar>
+
+<TabView selectedTabTextColor="blue" tabBackgroundColor="white"
+    tabTextFontSize="16" androidSelectedTabHighlightColor="gray">
+    <StackLayout
+        *tabItem="{title: 'Progreso', iconSource: 'res://progreso', textTransform: 'lowercase'}">
+        <GridLayout rows="*" height="1000px">
+            <RadCartesianChart row="0" style="font-size: 12;">
+                <CategoricalAxis tkCartesianHorizontalAxis></CategoricalAxis>
+                <LinearAxis tkCartesianVerticalAxis></LinearAxis>
+                <BarSeries tkCartesianSeries [items]="citas"
+                    categoryProperty="Citas" valueProperty="Cantidad"></BarSeries>
+            </RadCartesianChart>
+        </GridLayout>
+    </StackLayout>
+    <StackLayout
+        *tabItem="{title: 'Calendario', iconSource: 'res://calendario', textTransform: 'lowercase'}">
+        <RadCalendar
+        [eventSource]="calendarEvents"
+
+        eventsViewMode="Inline"
+        selectionMode="Single"
+        viewMode="Month"
+        transitionMode="Stack"
+        locale="en-US"
+
+        (dateSelected)="onDateSelected($event)"
+        (dateDeselected)="onDateDeselected($event)"
+        (navigatedToDate)="onNavigatedToDate($event)"
+        (navigatingToDateStarted)="onNavigatingToDateStarted($event)"
+        (viewModeChanged)="onViewModeChanged($event)"
+        ></RadCalendar>
+    </StackLayout>
+    <StackLayout
+        *tabItem="{title: 'Lista de citas', iconSource: 'res://listacitas', textTransform: 'lowercase', tabBackgroundColor: 'red'}">
+        <ListView [items]="reporteCitas" >
+            <ng-template let-item="item">
+                <GridLayout columns="80,50,200,50" rows="28,28">
+                    <Label  row="0" col="0" [text]="item.fecha"></Label>
+                    <Label row="0" class="lista" col="1" [text]="item.idExpediente"></Label>
+                     <Label row="0" class="lista" col="2" [text]="item.nombre"></Label>
+
+                     <Label row="1" class="lista" col="1" [text]="item.horaInicio" > </Label>
+                     <Label row="1" class="lista" col="2" [text]="item.horaFin"></Label>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+</TabView>
+
+
+

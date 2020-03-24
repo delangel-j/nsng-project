@@ -1,0 +1,48 @@
+<!--
+RadSideDrawer is a UI component part of the Progress NativeScript UI set of components.
+Learn more about the RadSideDrawer UI component and how it can be customized in this documentation article:
+https://docs.nativescript.org/angular/ui/professional-ui-components/ng-SideDrawer/getting-started
+-->
+<RadSideDrawer [drawerTransition]="sideDrawerTransition" >
+    <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
+        <StackLayout row="0" class="nt-drawer__header" style="background-color:#3f3f3f;;">
+         <!--   <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>-->
+            <Label></Label>
+            <Label class="nt-drawer__header-brand" text="User Name"></Label>
+            <Label class="nt-drawer__header-footnote" text="username@mail.com"></Label>
+        </StackLayout>-->
+
+        <ScrollView row="1" class="nt-drawer__body">
+            <StackLayout>
+                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/diagnosticos')" (tap)="onNavItemTap('/diagnosticos')">
+                    <Image class="m-r-10 imageDrawer" src="res://reportediagnostico" width="25" height="25" verticalAlignment="center"></Image>
+                    <Label col="1" text="Reporte de diagnósticos" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/citas')" (tap)="onNavItemTap('/citas')">
+                    <Image imageDrawer class="m-r-10" src="res://reportecitas" width="25" height="25" verticalAlignment="center"></Image>
+                    <Label col="1" text="Reporte de citas" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/progreso')" (tap)="onNavItemTap('/progreso')">
+                    <Image imageDrawer class="m-r-10" src="res://progresopaciente" width="25" height="25" verticalAlignment="center"></Image>
+                    <Label col="1" text="Progreso del paciente" class="p-r-10"></Label>
+                </GridLayout>
+
+                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/terapias')" (tap)="onNavItemTap('/terapias')">
+                    <Image class="m-r-10 imageDrawer" src="res://terapias" width="25" height="25" verticalAlignment="center"></Image>
+                    <Label col="1" text="Terapias" class="p-r-10"></Label>
+                </GridLayout>
+
+                <StackLayout class="hr"></StackLayout>
+
+                <GridLayout columns="auto, *" class="nt-drawer__list-item" [class.-selected]="isComponentSelected('/notificaciones')" (tap)="onNavItemTap('/notificaciones')">
+                    <Image class="m-r-10 imageDrawer" src="res://notificaciones" width="25" height="25" verticalAlignment="center"></Image>
+                    <Label col="1" text="Notificaciones" class="p-r-10"></Label>
+                </GridLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+
+    <page-router-outlet tkMainContent></page-router-outlet>
+</RadSideDrawer>

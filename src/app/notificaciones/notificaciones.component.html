@@ -1,0 +1,41 @@
+<ActionBar>
+    <!--
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!--
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label text="Notificaciones"></Label>
+</ActionBar>
+
+<ScrollView orientation="vertical">
+    <StackLayout orientation="vertical">
+       <GridLayout rows="30, 50,30, 50,30, 50,30, 50,30" columns="20,280, auto">
+
+           <Label textWrap="true" row="1"  col="1" class="titulo" text="Terapias"> </Label>
+           <Switch row="1" col="2"  checked="false" backgroundColor="green"></Switch>
+           <Label row="1" col="1" class="subtitulo" text="Recibe notificaciones diarias para ver vídeos" > </Label>
+
+           <Label textWrap="true" row="3" col="1" class="titulo" text="Progreso del paciente"> </Label>
+           <Switch row="3" col="2" checked="false" backgroundColor="green"></Switch>
+           <Label class="subtitulo" row="3" col="1" text="Recibe notificaciones al recibir el avance"> </Label>
+
+           <Label textWrap="true" row="5" col="1" class="titulo" text="Citas" > </Label>
+           <Switch row="5" col="2" checked="false" backgroundColor="green"></Switch>
+           <Label  row="5" col="1" class="subtitulo" text="Recibe más de una notificación"> </Label>
+
+
+           <Label textWrap="true" row="7" col="1" class="titulo" text="Reportes de progreso"> </Label>
+           <Switch row="7" col="2" checked="false" backgroundColor="green"></Switch>
+           <Label row="7" col="1" class="subtitulo"  text="Recibe notificaciones al llegar el reporte"> </Label>
+
+       </GridLayout>
+    </StackLayout>
+ </ScrollView>
