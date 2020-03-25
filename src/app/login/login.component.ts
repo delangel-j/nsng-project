@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
   isLogin = true;
   @ViewChild('passwordEl', null) passwordEl: ElementRef<TextField>;
   @ViewChild('emailEl', null) emailEl: ElementRef<TextField>;
-  page: Page;
 
-  constructor(private router: RouterExtensions) {}
+  constructor(private router: RouterExtensions, private page: Page) {
+      this.page.actionBarHidden = true;
+  }
 
   ngOnInit() {
-     // this.page = <Page>topmost().currentPage;
-    //  this.page.actionBarHidden= true;
+
     this.form = new FormGroup({
       email: new FormControl(null, {
         updateOn: 'blur',

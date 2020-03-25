@@ -1,1 +1,7 @@
 /* Add mobile styles for the component here.  */
+.form {
+    align-items: center;
+    justify-content: center;
+    margin: 40;
+    margin-top: 100;
+}
