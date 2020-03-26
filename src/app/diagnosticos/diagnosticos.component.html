@@ -48,14 +48,14 @@
       </Label>
       <Image src="res://down" class="icon" [ngClass]='{ collapse: isCollapsed2 }' (tap)="goCollapse2($event)"></Image>
   </FlexboxLayout>
-       <ListView [items]="terapias" [visibility]= "showCollapseBox2 ? 'visible' : 'collapse'">
+       <ListView [items]="listaPaciente" [visibility]= "showCollapseBox2 ? 'visible' : 'collapse'">
         <ng-template let-ter="item" >
             <StackLayout borderWidth="1">
-                <Label textWrap="true" [text]="ter.terapia1"></Label>
-                <Label textWrap="true" [text]="ter.terapia2"></Label>
-                <Label textWrap="true" [text]="ter.terapia3"></Label>
-                <Label textWrap="true" [text]="ter.terapia4"></Label>
-                <Label textWrap="true" [text]="ter.terapia5"></Label>
+                <Label textWrap="true" [text]="ter.idPaciente"></Label>
+                <Label textWrap="true" [text]="ter.nombrePaciente"></Label>
+                <Label textWrap="true" [text]="ter.apellidoPaciente"></Label>
+                <Label textWrap="true" [text]="ter.edadPaciente"></Label>
+                <Label textWrap="true" [text]="ter.numero_expediente"></Label>
             </StackLayout>
         </ng-template>
        </ListView>

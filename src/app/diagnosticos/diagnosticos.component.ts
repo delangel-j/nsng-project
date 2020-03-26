@@ -1,13 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
+import { Paciente } from "../shared/pacientes/paciente.model";
+import { PacienteService } from "../shared/pacientes/paciente.service";
 
 @Component({
     selector: "Diagnosticos",
     templateUrl: "./diagnosticos.component.html",
-    styleUrls : ["./diagnosticos.component.css" ]
+    styleUrls : ["./diagnosticos.component.css" ],
+    providers: [PacienteService]
 })
 export class DiagnosticosComponent implements OnInit {
+
+    listaPaciente: Array<Paciente> = [];
 
     diagnosticos: {diagnostico1: string, diagnostico2: string, diagnostico3: string }[] = [
         {
@@ -80,12 +85,17 @@ export class DiagnosticosComponent implements OnInit {
                 this.isCollapsed4 = !this.isCollapsed4;
             }
         }
-    constructor() {
+    constructor(private pacienteService: PacienteService) {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
+        this.pacienteService.obtenerPacientes()
+        .subscribe((fetchPaciente: []) => {
+            fetchPaciente.forEach((pacienteObject: Paciente) => {
+                this.listaPaciente.unshift(pacienteObject);
+            });
+        });
     }
 
     onDrawerButtonTap(): void {
