@@ -4,6 +4,7 @@ C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\asse
 C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\assets\app\3.js
 C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\assets\app\4.js
 C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\assets\app\5.js
+C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\assets\app\6.js
 C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\assets\app\bundle.js
 C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\assets\app\runtime.js
 C:\Users\Jesus\Documents\Udemy\angular-Front\platforms\android\app\src\main\assets\app\tns-java-classes.js

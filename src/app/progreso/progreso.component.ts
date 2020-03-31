@@ -2,18 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 
-import { Persona } from "../shared/persona/persona.model";
-import { PersonaService } from "../shared/persona/persona.service";
 
 @Component({
     selector: "Progreso",
     templateUrl: "./progreso.component.html",
-    providers: [PersonaService]
 })
 export class ProgresoComponent implements OnInit {
-
-    personaList: Array<Persona> = [];
-
 
     progresos: {bloque: string, inicio: string, fin: string}[] = [
         {
@@ -39,18 +33,12 @@ export class ProgresoComponent implements OnInit {
 
         ]
 
-    constructor(private personaService: PersonaService) {
+    constructor() {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        // Init your component properties here.
-        this.personaService.load()
-        .subscribe((loadedPersonas: []) => {
-            loadedPersonas.forEach((personaObject: Persona) => {
-                this.personaList.unshift(personaObject);
-            });
-        });
+
     }
 
     onDrawerButtonTap(): void {

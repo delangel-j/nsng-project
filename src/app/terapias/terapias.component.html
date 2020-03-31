@@ -15,11 +15,11 @@
     <Label text="Terapias"></Label>
 </ActionBar>
 
-<ListView [items]="terapias" iosEstimatedRowHeight="65">
+<ListView [items]="terapias" iosEstimatedRowHeight="65" (tap)="onSelect($event)">
     <ng-template let-terapia="item" let-i="index">
         <GridLayout rows="40,auto" columns="50,*">
             <Image [src]="terapia.img"></Image>
-            <Label [text]="terapia.terapia" row="0" col="1"></Label>
+            <Label [(ngModel)]="prueba" [text]="terapia.terapia" row="0" col="1"></Label>
         </GridLayout>
     </ng-template>
 </ListView>

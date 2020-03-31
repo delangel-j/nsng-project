@@ -1,121 +1,155 @@
 (global["webpackJsonp"] = global["webpackJsonp"] || []).push([[5],{
 
-/***/ "./app/notificaciones/notificaciones-routing.module.ts":
+/***/ "./app/shared/terapia/terapia.model.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacionesRoutingModule", function() { return NotificacionesRoutingModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Terapia", function() { return Terapia; });
+var Terapia = /** @class */ (function () {
+    function Terapia() {
+    }
+    return Terapia;
+}());
+
+
+
+/***/ }),
+
+/***/ "./app/terapias/terapias-routing.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TerapiasRoutingModule", function() { return TerapiasRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("../node_modules/@nativescript/angular/router/index.js");
 /* harmony import */ var nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _notificaciones_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./app/notificaciones/notificaciones.component.ts");
+/* harmony import */ var _terapias_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./app/terapias/terapias.component.ts");
 
 
 
 var routes = [
-    { path: "", component: _notificaciones_component__WEBPACK_IMPORTED_MODULE_2__["NotificacionesComponent"] }
+    { path: "", component: _terapias_component__WEBPACK_IMPORTED_MODULE_2__["TerapiasComponent"] }
 ];
-var NotificacionesRoutingModule = /** @class */ (function () {
-    function NotificacionesRoutingModule() {
+var TerapiasRoutingModule = /** @class */ (function () {
+    function TerapiasRoutingModule() {
     }
-    NotificacionesRoutingModule = __decorate([
+    TerapiasRoutingModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["NativeScriptRouterModule"].forChild(routes)],
             exports: [nativescript_angular_router__WEBPACK_IMPORTED_MODULE_1__["NativeScriptRouterModule"]]
         })
-    ], NotificacionesRoutingModule);
-    return NotificacionesRoutingModule;
+    ], TerapiasRoutingModule);
+    return TerapiasRoutingModule;
 }());
 
 
 
 /***/ }),
 
-/***/ "./app/notificaciones/notificaciones.component.css":
+/***/ "./app/terapias/terapias.component.html":
 /***/ (function(module, exports) {
 
-module.exports = ".titulo {\n    font-size: 20;\n}\n.subtitulo {\n    margin-top: 25;\n}\n"
+module.exports = "<ActionBar>\n    <!--\n    Use the NavigationButton as a side-drawer button in Android\n    because ActionItems are shown on the right side of the ActionBar\n    -->\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\n    <!--\n    Use the ActionItem for IOS with position set to left. Using the\n    NavigationButton as a side-drawer button in iOS is not possible,\n    because its function is to always navigate back in the application.\n    -->\n    <ActionItem icon=\"res://menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\"\n        ios.position=\"left\">\n    </ActionItem>\n    <Label text=\"Terapias\"></Label>\n</ActionBar>\n\n<ListView [items]=\"terapias\" iosEstimatedRowHeight=\"65\" (tap)=\"onSelect($event)\">\n    <ng-template let-terapia=\"item\" let-i=\"index\">\n        <GridLayout rows=\"40,auto\" columns=\"50,*\">\n            <Image [src]=\"terapia.img\"></Image>\n            <Label [(ngModel)]=\"prueba\" [text]=\"terapia.terapia\" row=\"0\" col=\"1\"></Label>\n        </GridLayout>\n    </ng-template>\n</ListView>\n"
 
 /***/ }),
 
-/***/ "./app/notificaciones/notificaciones.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<ActionBar>\n    <!--\n    Use the NavigationButton as a side-drawer button in Android\n    because ActionItems are shown on the right side of the ActionBar\n    -->\n    <NavigationButton ios:visibility=\"collapsed\" icon=\"res://menu\" (tap)=\"onDrawerButtonTap()\"></NavigationButton>\n    <!--\n    Use the ActionItem for IOS with position set to left. Using the\n    NavigationButton as a side-drawer button in iOS is not possible,\n    because its function is to always navigate back in the application.\n    -->\n    <ActionItem icon=\"res://menu\" android:visibility=\"collapsed\" (tap)=\"onDrawerButtonTap()\"\n        ios.position=\"left\">\n    </ActionItem>\n    <Label text=\"Notificaciones\"></Label>\n</ActionBar>\n\n<ScrollView orientation=\"vertical\">\n    <StackLayout orientation=\"vertical\">\n       <GridLayout rows=\"30, 50,30, 50,30, 50,30, 50,30\" columns=\"20,280, auto\">\n\n           <Label textWrap=\"true\" row=\"1\"  col=\"1\" class=\"titulo\" text=\"Terapias\"> </Label>\n           <Switch row=\"1\" col=\"2\"  checked=\"false\" backgroundColor=\"green\"></Switch>\n           <Label row=\"1\" col=\"1\" class=\"subtitulo\" text=\"Recibe notificaciones diarias para ver vídeos\" > </Label>\n\n           <Label textWrap=\"true\" row=\"3\" col=\"1\" class=\"titulo\" text=\"Progreso del paciente\"> </Label>\n           <Switch row=\"3\" col=\"2\" checked=\"false\" backgroundColor=\"green\"></Switch>\n           <Label class=\"subtitulo\" row=\"3\" col=\"1\" text=\"Recibe notificaciones al recibir el avance\"> </Label>\n\n           <Label textWrap=\"true\" row=\"5\" col=\"1\" class=\"titulo\" text=\"Citas\" > </Label>\n           <Switch row=\"5\" col=\"2\" checked=\"false\" backgroundColor=\"green\"></Switch>\n           <Label  row=\"5\" col=\"1\" class=\"subtitulo\" text=\"Recibe más de una notificación\"> </Label>\n\n\n           <Label textWrap=\"true\" row=\"7\" col=\"1\" class=\"titulo\" text=\"Reportes de progreso\"> </Label>\n           <Switch row=\"7\" col=\"2\" checked=\"false\" backgroundColor=\"green\"></Switch>\n           <Label row=\"7\" col=\"1\" class=\"subtitulo\"  text=\"Recibe notificaciones al llegar el reporte\"> </Label>\n\n       </GridLayout>\n    </StackLayout>\n </ScrollView>\n"
-
-/***/ }),
-
-/***/ "./app/notificaciones/notificaciones.component.ts":
+/***/ "./app/terapias/terapias.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacionesComponent", function() { return NotificacionesComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TerapiasComponent", function() { return TerapiasComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("../node_modules/@nativescript/core/application/application.js");
 /* harmony import */ var tns_core_modules_application__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(tns_core_modules_application__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _app_shared_terapia_terapia_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./app/shared/terapia/terapia.model.ts");
 
 
-var NotificacionesComponent = /** @class */ (function () {
-    function NotificacionesComponent() {
-        // Use the component constructor to inject providers.
+
+var TerapiasComponent = /** @class */ (function () {
+    function TerapiasComponent() {
+        this.prueba = '';
+        this.terapias = [
+            {
+                idTerapia: 1,
+                terapia: "Respiración y relajación",
+                img: "~/images/respiracion.jpg"
+            },
+            {
+                idTerapia: 2,
+                terapia: "Prefonatorios",
+                img: "~/images/prefonatorios.jpg"
+            },
+            {
+                idTerapia: 3,
+                terapia: "Praxias orofaciales",
+                img: "~/images/praxias.jpg"
+            },
+            {
+                terapia: "Ejercicios de fonemas",
+                img: "~/images/fonemas.jpg"
+            }
+        ];
+        this.terapia = new _app_shared_terapia_terapia_model__WEBPACK_IMPORTED_MODULE_2__["Terapia"]();
     }
-    NotificacionesComponent.prototype.ngOnInit = function () {
+    TerapiasComponent.prototype.ngOnInit = function () {
         // Init your component properties here.
     };
-    NotificacionesComponent.prototype.onDrawerButtonTap = function () {
+    TerapiasComponent.prototype.onDrawerButtonTap = function () {
         var sideDrawer = tns_core_modules_application__WEBPACK_IMPORTED_MODULE_1__["getRootView"]();
         sideDrawer.showDrawer();
     };
-    NotificacionesComponent = __decorate([
+    TerapiasComponent.prototype.onSelect = function (args) {
+    };
+    TerapiasComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: "Notificaciones",
-            template: __webpack_require__("./app/notificaciones/notificaciones.component.html"),
-            styles: [__webpack_require__("./app/notificaciones/notificaciones.component.css")]
+            selector: "Terapias",
+            template: __webpack_require__("./app/terapias/terapias.component.html")
         }),
         __metadata("design:paramtypes", [])
-    ], NotificacionesComponent);
-    return NotificacionesComponent;
+    ], TerapiasComponent);
+    return TerapiasComponent;
 }());
 
 
 
 /***/ }),
 
-/***/ "./app/notificaciones/notificaciones.module.ts":
+/***/ "./app/terapias/terapias.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificacionesModule", function() { return NotificacionesModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TerapiasModule", function() { return TerapiasModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("../node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var nativescript_angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("../node_modules/@nativescript/angular/common.js");
 /* harmony import */ var nativescript_angular_common__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(nativescript_angular_common__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _notificaciones_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./app/notificaciones/notificaciones-routing.module.ts");
-/* harmony import */ var _notificaciones_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/notificaciones/notificaciones.component.ts");
+/* harmony import */ var _terapias_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./app/terapias/terapias-routing.module.ts");
+/* harmony import */ var _terapias_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./app/terapias/terapias.component.ts");
 
 
 
 
-var NotificacionesModule = /** @class */ (function () {
-    function NotificacionesModule() {
+var TerapiasModule = /** @class */ (function () {
+    function TerapiasModule() {
     }
-    NotificacionesModule = __decorate([
+    TerapiasModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [
                 nativescript_angular_common__WEBPACK_IMPORTED_MODULE_1__["NativeScriptCommonModule"],
-                _notificaciones_routing_module__WEBPACK_IMPORTED_MODULE_2__["NotificacionesRoutingModule"]
+                _terapias_routing_module__WEBPACK_IMPORTED_MODULE_2__["TerapiasRoutingModule"]
             ],
             declarations: [
-                _notificaciones_component__WEBPACK_IMPORTED_MODULE_3__["NotificacionesComponent"]
+                _terapias_component__WEBPACK_IMPORTED_MODULE_3__["TerapiasComponent"]
             ],
             schemas: [
                 _angular_core__WEBPACK_IMPORTED_MODULE_0__["NO_ERRORS_SCHEMA"]
             ]
         })
-    ], NotificacionesModule);
-    return NotificacionesModule;
+    ], TerapiasModule);
+    return TerapiasModule;
 }());
 
 
@@ -123,4 +157,4 @@ var NotificacionesModule = /** @class */ (function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvbm90aWZpY2FjaW9uZXMvbm90aWZpY2FjaW9uZXMtcm91dGluZy5tb2R1bGUudHMiLCJ3ZWJwYWNrOi8vLy4vYXBwL25vdGlmaWNhY2lvbmVzL25vdGlmaWNhY2lvbmVzLmNvbXBvbmVudC5jc3MiLCJ3ZWJwYWNrOi8vLy4vYXBwL25vdGlmaWNhY2lvbmVzL25vdGlmaWNhY2lvbmVzLmNvbXBvbmVudC5odG1sIiwid2VicGFjazovLy8uL2FwcC9ub3RpZmljYWNpb25lcy9ub3RpZmljYWNpb25lcy5jb21wb25lbnQudHMiLCJ3ZWJwYWNrOi8vLy4vYXBwL25vdGlmaWNhY2lvbmVzL25vdGlmaWNhY2lvbmVzLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBeUM7QUFFOEI7QUFFRjtBQUVyRSxJQUFNLE1BQU0sR0FBVztJQUNuQixFQUFFLElBQUksRUFBRSxFQUFFLEVBQUUsU0FBUyxFQUFFLGlGQUF1QixFQUFFO0NBQ25ELENBQUM7QUFNRjtJQUFBO0lBQTJDLENBQUM7SUFBL0IsMkJBQTJCO1FBSnZDLDhEQUFRLENBQUM7WUFDTixPQUFPLEVBQUUsQ0FBQyxvRkFBd0IsQ0FBQyxRQUFRLENBQUMsTUFBTSxDQUFDLENBQUM7WUFDcEQsT0FBTyxFQUFFLENBQUMsb0ZBQXdCLENBQUM7U0FDdEMsQ0FBQztPQUNXLDJCQUEyQixDQUFJO0lBQUQsa0NBQUM7Q0FBQTtBQUFKOzs7Ozs7OztBQ2R4QywyQkFBMkIsb0JBQW9CLEdBQUcsY0FBYyxxQkFBcUIsR0FBRyxHOzs7Ozs7O0FDQXhGLHF1RTs7Ozs7Ozs7QUNBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQWtEO0FBRUU7QUFPcEQ7SUFFSTtRQUNJLHFEQUFxRDtJQUN6RCxDQUFDO0lBRUQsMENBQVEsR0FBUjtRQUNJLHVDQUF1QztJQUMzQyxDQUFDO0lBRUQsbURBQWlCLEdBQWpCO1FBQ0ksSUFBTSxVQUFVLEdBQWtCLHdFQUFlLEVBQUUsQ0FBQztRQUNwRCxVQUFVLENBQUMsVUFBVSxFQUFFLENBQUM7SUFDNUIsQ0FBQztJQWJRLHVCQUF1QjtRQUxuQywrREFBUyxDQUFDO1lBQ1AsUUFBUSxFQUFFLGdCQUFnQjtZQUMxQixtRkFBOEM7O1NBRWpELENBQUM7O09BQ1csdUJBQXVCLENBY25DO0lBQUQsOEJBQUM7Q0FBQTtBQWRtQzs7Ozs7Ozs7O0FDVHBDO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQTJEO0FBQ1k7QUFFTztBQUNUO0FBY3JFO0lBQUE7SUFBb0MsQ0FBQztJQUF4QixvQkFBb0I7UUFaaEMsOERBQVEsQ0FBQztZQUNOLE9BQU8sRUFBRTtnQkFDTCxvRkFBd0I7Z0JBQ3hCLDBGQUEyQjthQUM5QjtZQUNELFlBQVksRUFBRTtnQkFDVixpRkFBdUI7YUFDMUI7WUFDRCxPQUFPLEVBQUU7Z0JBQ0wsOERBQWdCO2FBQ25CO1NBQ0osQ0FBQztPQUNXLG9CQUFvQixDQUFJO0lBQUQsMkJBQUM7Q0FBQTtBQUFKIiwiZmlsZSI6IjUuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XG5pbXBvcnQgeyBSb3V0ZXMgfSBmcm9tIFwiQGFuZ3VsYXIvcm91dGVyXCI7XG5pbXBvcnQgeyBOYXRpdmVTY3JpcHRSb3V0ZXJNb2R1bGUgfSBmcm9tIFwibmF0aXZlc2NyaXB0LWFuZ3VsYXIvcm91dGVyXCI7XG5cbmltcG9ydCB7IE5vdGlmaWNhY2lvbmVzQ29tcG9uZW50IH0gZnJvbSBcIi4vbm90aWZpY2FjaW9uZXMuY29tcG9uZW50XCI7XG5cbmNvbnN0IHJvdXRlczogUm91dGVzID0gW1xuICAgIHsgcGF0aDogXCJcIiwgY29tcG9uZW50OiBOb3RpZmljYWNpb25lc0NvbXBvbmVudCB9XG5dO1xuXG5ATmdNb2R1bGUoe1xuICAgIGltcG9ydHM6IFtOYXRpdmVTY3JpcHRSb3V0ZXJNb2R1bGUuZm9yQ2hpbGQocm91dGVzKV0sXG4gICAgZXhwb3J0czogW05hdGl2ZVNjcmlwdFJvdXRlck1vZHVsZV1cbn0pXG5leHBvcnQgY2xhc3MgTm90aWZpY2FjaW9uZXNSb3V0aW5nTW9kdWxlIHsgfVxuIiwibW9kdWxlLmV4cG9ydHMgPSBcIi50aXR1bG8ge1xcbiAgICBmb250LXNpemU6IDIwO1xcbn1cXG4uc3VidGl0dWxvIHtcXG4gICAgbWFyZ2luLXRvcDogMjU7XFxufVxcblwiIiwibW9kdWxlLmV4cG9ydHMgPSBcIjxBY3Rpb25CYXI+XFxuICAgIDwhLS1cXG4gICAgVXNlIHRoZSBOYXZpZ2F0aW9uQnV0dG9uIGFzIGEgc2lkZS1kcmF3ZXIgYnV0dG9uIGluIEFuZHJvaWRcXG4gICAgYmVjYXVzZSBBY3Rpb25JdGVtcyBhcmUgc2hvd24gb24gdGhlIHJpZ2h0IHNpZGUgb2YgdGhlIEFjdGlvbkJhclxcbiAgICAtLT5cXG4gICAgPE5hdmlnYXRpb25CdXR0b24gaW9zOnZpc2liaWxpdHk9XFxcImNvbGxhcHNlZFxcXCIgaWNvbj1cXFwicmVzOi8vbWVudVxcXCIgKHRhcCk9XFxcIm9uRHJhd2VyQnV0dG9uVGFwKClcXFwiPjwvTmF2aWdhdGlvbkJ1dHRvbj5cXG4gICAgPCEtLVxcbiAgICBVc2UgdGhlIEFjdGlvbkl0ZW0gZm9yIElPUyB3aXRoIHBvc2l0aW9uIHNldCB0byBsZWZ0LiBVc2luZyB0aGVcXG4gICAgTmF2aWdhdGlvbkJ1dHRvbiBhcyBhIHNpZGUtZHJhd2VyIGJ1dHRvbiBpbiBpT1MgaXMgbm90IHBvc3NpYmxlLFxcbiAgICBiZWNhdXNlIGl0cyBmdW5jdGlvbiBpcyB0byBhbHdheXMgbmF2aWdhdGUgYmFjayBpbiB0aGUgYXBwbGljYXRpb24uXFxuICAgIC0tPlxcbiAgICA8QWN0aW9uSXRlbSBpY29uPVxcXCJyZXM6Ly9tZW51XFxcIiBhbmRyb2lkOnZpc2liaWxpdHk9XFxcImNvbGxhcHNlZFxcXCIgKHRhcCk9XFxcIm9uRHJhd2VyQnV0dG9uVGFwKClcXFwiXFxuICAgICAgICBpb3MucG9zaXRpb249XFxcImxlZnRcXFwiPlxcbiAgICA8L0FjdGlvbkl0ZW0+XFxuICAgIDxMYWJlbCB0ZXh0PVxcXCJOb3RpZmljYWNpb25lc1xcXCI+PC9MYWJlbD5cXG48L0FjdGlvbkJhcj5cXG5cXG48U2Nyb2xsVmlldyBvcmllbnRhdGlvbj1cXFwidmVydGljYWxcXFwiPlxcbiAgICA8U3RhY2tMYXlvdXQgb3JpZW50YXRpb249XFxcInZlcnRpY2FsXFxcIj5cXG4gICAgICAgPEdyaWRMYXlvdXQgcm93cz1cXFwiMzAsIDUwLDMwLCA1MCwzMCwgNTAsMzAsIDUwLDMwXFxcIiBjb2x1bW5zPVxcXCIyMCwyODAsIGF1dG9cXFwiPlxcblxcbiAgICAgICAgICAgPExhYmVsIHRleHRXcmFwPVxcXCJ0cnVlXFxcIiByb3c9XFxcIjFcXFwiICBjb2w9XFxcIjFcXFwiIGNsYXNzPVxcXCJ0aXR1bG9cXFwiIHRleHQ9XFxcIlRlcmFwaWFzXFxcIj4gPC9MYWJlbD5cXG4gICAgICAgICAgIDxTd2l0Y2ggcm93PVxcXCIxXFxcIiBjb2w9XFxcIjJcXFwiICBjaGVja2VkPVxcXCJmYWxzZVxcXCIgYmFja2dyb3VuZENvbG9yPVxcXCJncmVlblxcXCI+PC9Td2l0Y2g+XFxuICAgICAgICAgICA8TGFiZWwgcm93PVxcXCIxXFxcIiBjb2w9XFxcIjFcXFwiIGNsYXNzPVxcXCJzdWJ0aXR1bG9cXFwiIHRleHQ9XFxcIlJlY2liZSBub3RpZmljYWNpb25lcyBkaWFyaWFzIHBhcmEgdmVyIHbDrWRlb3NcXFwiID4gPC9MYWJlbD5cXG5cXG4gICAgICAgICAgIDxMYWJlbCB0ZXh0V3JhcD1cXFwidHJ1ZVxcXCIgcm93PVxcXCIzXFxcIiBjb2w9XFxcIjFcXFwiIGNsYXNzPVxcXCJ0aXR1bG9cXFwiIHRleHQ9XFxcIlByb2dyZXNvIGRlbCBwYWNpZW50ZVxcXCI+IDwvTGFiZWw+XFxuICAgICAgICAgICA8U3dpdGNoIHJvdz1cXFwiM1xcXCIgY29sPVxcXCIyXFxcIiBjaGVja2VkPVxcXCJmYWxzZVxcXCIgYmFja2dyb3VuZENvbG9yPVxcXCJncmVlblxcXCI+PC9Td2l0Y2g+XFxuICAgICAgICAgICA8TGFiZWwgY2xhc3M9XFxcInN1YnRpdHVsb1xcXCIgcm93PVxcXCIzXFxcIiBjb2w9XFxcIjFcXFwiIHRleHQ9XFxcIlJlY2liZSBub3RpZmljYWNpb25lcyBhbCByZWNpYmlyIGVsIGF2YW5jZVxcXCI+IDwvTGFiZWw+XFxuXFxuICAgICAgICAgICA8TGFiZWwgdGV4dFdyYXA9XFxcInRydWVcXFwiIHJvdz1cXFwiNVxcXCIgY29sPVxcXCIxXFxcIiBjbGFzcz1cXFwidGl0dWxvXFxcIiB0ZXh0PVxcXCJDaXRhc1xcXCIgPiA8L0xhYmVsPlxcbiAgICAgICAgICAgPFN3aXRjaCByb3c9XFxcIjVcXFwiIGNvbD1cXFwiMlxcXCIgY2hlY2tlZD1cXFwiZmFsc2VcXFwiIGJhY2tncm91bmRDb2xvcj1cXFwiZ3JlZW5cXFwiPjwvU3dpdGNoPlxcbiAgICAgICAgICAgPExhYmVsICByb3c9XFxcIjVcXFwiIGNvbD1cXFwiMVxcXCIgY2xhc3M9XFxcInN1YnRpdHVsb1xcXCIgdGV4dD1cXFwiUmVjaWJlIG3DoXMgZGUgdW5hIG5vdGlmaWNhY2nDs25cXFwiPiA8L0xhYmVsPlxcblxcblxcbiAgICAgICAgICAgPExhYmVsIHRleHRXcmFwPVxcXCJ0cnVlXFxcIiByb3c9XFxcIjdcXFwiIGNvbD1cXFwiMVxcXCIgY2xhc3M9XFxcInRpdHVsb1xcXCIgdGV4dD1cXFwiUmVwb3J0ZXMgZGUgcHJvZ3Jlc29cXFwiPiA8L0xhYmVsPlxcbiAgICAgICAgICAgPFN3aXRjaCByb3c9XFxcIjdcXFwiIGNvbD1cXFwiMlxcXCIgY2hlY2tlZD1cXFwiZmFsc2VcXFwiIGJhY2tncm91bmRDb2xvcj1cXFwiZ3JlZW5cXFwiPjwvU3dpdGNoPlxcbiAgICAgICAgICAgPExhYmVsIHJvdz1cXFwiN1xcXCIgY29sPVxcXCIxXFxcIiBjbGFzcz1cXFwic3VidGl0dWxvXFxcIiAgdGV4dD1cXFwiUmVjaWJlIG5vdGlmaWNhY2lvbmVzIGFsIGxsZWdhciBlbCByZXBvcnRlXFxcIj4gPC9MYWJlbD5cXG5cXG4gICAgICAgPC9HcmlkTGF5b3V0PlxcbiAgICA8L1N0YWNrTGF5b3V0PlxcbiA8L1Njcm9sbFZpZXc+XFxuXCIiLCJpbXBvcnQgeyBDb21wb25lbnQsIE9uSW5pdCB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XG5pbXBvcnQgeyBSYWRTaWRlRHJhd2VyIH0gZnJvbSBcIm5hdGl2ZXNjcmlwdC11aS1zaWRlZHJhd2VyXCI7XG5pbXBvcnQgKiBhcyBhcHAgZnJvbSBcInRucy1jb3JlLW1vZHVsZXMvYXBwbGljYXRpb25cIjtcblxuQENvbXBvbmVudCh7XG4gICAgc2VsZWN0b3I6IFwiTm90aWZpY2FjaW9uZXNcIixcbiAgICB0ZW1wbGF0ZVVybDogXCIuL25vdGlmaWNhY2lvbmVzLmNvbXBvbmVudC5odG1sXCIsXG4gICAgc3R5bGVVcmxzOiBbJy4vbm90aWZpY2FjaW9uZXMuY29tcG9uZW50LmNzcyddXG59KVxuZXhwb3J0IGNsYXNzIE5vdGlmaWNhY2lvbmVzQ29tcG9uZW50IGltcGxlbWVudHMgT25Jbml0IHtcblxuICAgIGNvbnN0cnVjdG9yKCkge1xuICAgICAgICAvLyBVc2UgdGhlIGNvbXBvbmVudCBjb25zdHJ1Y3RvciB0byBpbmplY3QgcHJvdmlkZXJzLlxuICAgIH1cblxuICAgIG5nT25Jbml0KCk6IHZvaWQge1xuICAgICAgICAvLyBJbml0IHlvdXIgY29tcG9uZW50IHByb3BlcnRpZXMgaGVyZS5cbiAgICB9XG5cbiAgICBvbkRyYXdlckJ1dHRvblRhcCgpOiB2b2lkIHtcbiAgICAgICAgY29uc3Qgc2lkZURyYXdlciA9IDxSYWRTaWRlRHJhd2VyPmFwcC5nZXRSb290VmlldygpO1xuICAgICAgICBzaWRlRHJhd2VyLnNob3dEcmF3ZXIoKTtcbiAgICB9XG59XG4iLCJpbXBvcnQgeyBOZ01vZHVsZSwgTk9fRVJST1JTX1NDSEVNQSB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XG5pbXBvcnQgeyBOYXRpdmVTY3JpcHRDb21tb25Nb2R1bGUgfSBmcm9tIFwibmF0aXZlc2NyaXB0LWFuZ3VsYXIvY29tbW9uXCI7XG5cbmltcG9ydCB7IE5vdGlmaWNhY2lvbmVzUm91dGluZ01vZHVsZSB9IGZyb20gXCIuL25vdGlmaWNhY2lvbmVzLXJvdXRpbmcubW9kdWxlXCI7XG5pbXBvcnQgeyBOb3RpZmljYWNpb25lc0NvbXBvbmVudCB9IGZyb20gXCIuL25vdGlmaWNhY2lvbmVzLmNvbXBvbmVudFwiO1xuXG5ATmdNb2R1bGUoe1xuICAgIGltcG9ydHM6IFtcbiAgICAgICAgTmF0aXZlU2NyaXB0Q29tbW9uTW9kdWxlLFxuICAgICAgICBOb3RpZmljYWNpb25lc1JvdXRpbmdNb2R1bGVcbiAgICBdLFxuICAgIGRlY2xhcmF0aW9uczogW1xuICAgICAgICBOb3RpZmljYWNpb25lc0NvbXBvbmVudFxuICAgIF0sXG4gICAgc2NoZW1hczogW1xuICAgICAgICBOT19FUlJPUlNfU0NIRU1BXG4gICAgXVxufSlcbmV4cG9ydCBjbGFzcyBOb3RpZmljYWNpb25lc01vZHVsZSB7IH1cbiJdLCJzb3VyY2VSb290IjoiIn0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9hcHAvc2hhcmVkL3RlcmFwaWEvdGVyYXBpYS5tb2RlbC50cyIsIndlYnBhY2s6Ly8vLi9hcHAvdGVyYXBpYXMvdGVyYXBpYXMtcm91dGluZy5tb2R1bGUudHMiLCJ3ZWJwYWNrOi8vLy4vYXBwL3RlcmFwaWFzL3RlcmFwaWFzLmNvbXBvbmVudC5odG1sIiwid2VicGFjazovLy8uL2FwcC90ZXJhcGlhcy90ZXJhcGlhcy5jb21wb25lbnQudHMiLCJ3ZWJwYWNrOi8vLy4vYXBwL3RlcmFwaWFzL3RlcmFwaWFzLm1vZHVsZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7QUFBQTtBQUFBO0FBQUE7SUFBQTtJQVFBLENBQUM7SUFBRCxjQUFDO0FBQUQsQ0FBQzs7Ozs7Ozs7OztBQ1JEO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUF5QztBQUU4QjtBQUVkO0FBRXpELElBQU0sTUFBTSxHQUFXO0lBQ25CLEVBQUUsSUFBSSxFQUFFLEVBQUUsRUFBRSxTQUFTLEVBQUUscUVBQWlCLEVBQUU7Q0FDN0MsQ0FBQztBQU1GO0lBQUE7SUFBcUMsQ0FBQztJQUF6QixxQkFBcUI7UUFKakMsOERBQVEsQ0FBQztZQUNOLE9BQU8sRUFBRSxDQUFDLG9GQUF3QixDQUFDLFFBQVEsQ0FBQyxNQUFNLENBQUMsQ0FBQztZQUNwRCxPQUFPLEVBQUUsQ0FBQyxvRkFBd0IsQ0FBQztTQUN0QyxDQUFDO09BQ1cscUJBQXFCLENBQUk7SUFBRCw0QkFBQztDQUFBO0FBQUo7Ozs7Ozs7O0FDZGxDLGdvQzs7Ozs7Ozs7QUNBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBa0Q7QUFFRTtBQUNRO0FBUTVEO0lBMEJJO1FBeEJBLFdBQU0sR0FBRyxFQUFFLENBQUM7UUFFWixhQUFRLEdBQUc7WUFDUDtnQkFDSSxTQUFTLEVBQUUsQ0FBQztnQkFDWixPQUFPLEVBQUUsMEJBQTBCO2dCQUNuQyxHQUFHLEVBQUUsMEJBQTBCO2FBQ2xDO1lBQ0Q7Z0JBQ0ksU0FBUyxFQUFFLENBQUM7Z0JBQ1osT0FBTyxFQUFFLGVBQWU7Z0JBQ3hCLEdBQUcsRUFBRSw0QkFBNEI7YUFDcEM7WUFDRDtnQkFDSSxTQUFTLEVBQUUsQ0FBQztnQkFDWixPQUFPLEVBQUUscUJBQXFCO2dCQUM5QixHQUFHLEVBQUUsc0JBQXNCO2FBQzlCO1lBQ0Q7Z0JBQ0ksT0FBTyxFQUFFLHVCQUF1QjtnQkFDaEMsR0FBRyxFQUFFLHNCQUFzQjthQUM5QjtTQUNKO1FBR0csSUFBSSxDQUFDLE9BQU8sR0FBRyxJQUFJLHlFQUFPLEVBQUUsQ0FBQztJQUNqQyxDQUFDO0lBRUQsb0NBQVEsR0FBUjtRQUNJLHVDQUF1QztJQUMzQyxDQUFDO0lBRUQsNkNBQWlCLEdBQWpCO1FBQ0ksSUFBTSxVQUFVLEdBQWtCLHdFQUFlLEVBQUUsQ0FBQztRQUNwRCxVQUFVLENBQUMsVUFBVSxFQUFFLENBQUM7SUFDNUIsQ0FBQztJQUVELG9DQUFRLEdBQVIsVUFBUyxJQUFtQjtJQUc1QixDQUFDO0lBMUNRLGlCQUFpQjtRQUo3QiwrREFBUyxDQUFDO1lBQ1AsUUFBUSxFQUFFLFVBQVU7WUFDcEIsdUVBQXdDO1NBQzNDLENBQUM7O09BQ1csaUJBQWlCLENBMkM3QjtJQUFELHdCQUFDO0NBQUE7QUEzQzZCOzs7Ozs7Ozs7QUNYOUI7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBMkQ7QUFDWTtBQUVMO0FBQ1Q7QUFjekQ7SUFBQTtJQUE4QixDQUFDO0lBQWxCLGNBQWM7UUFaMUIsOERBQVEsQ0FBQztZQUNOLE9BQU8sRUFBRTtnQkFDTCxvRkFBd0I7Z0JBQ3hCLDhFQUFxQjthQUN4QjtZQUNELFlBQVksRUFBRTtnQkFDVixxRUFBaUI7YUFDcEI7WUFDRCxPQUFPLEVBQUU7Z0JBQ0wsOERBQWdCO2FBQ25CO1NBQ0osQ0FBQztPQUNXLGNBQWMsQ0FBSTtJQUFELHFCQUFDO0NBQUE7QUFBSiIsImZpbGUiOiI1LmpzIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNsYXNzIFRlcmFwaWEge1xuICAgICAgICBpZFRlcmFwaWE6IG51bWJlcjtcbiAgICAgICAgZGVzY3JpcGNpb246IHN0cmluZztcbiAgICAgICAgZW5sYWNlOiBzdHJpbmc7XG4gICAgICAgIGltYWdlbjogc3RyaW5nO1xuICAgICAgICBpZEZvbmVtYTogbnVtYmVyO1xuXG5cbn1cbiIsImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcbmltcG9ydCB7IFJvdXRlcyB9IGZyb20gXCJAYW5ndWxhci9yb3V0ZXJcIjtcbmltcG9ydCB7IE5hdGl2ZVNjcmlwdFJvdXRlck1vZHVsZSB9IGZyb20gXCJuYXRpdmVzY3JpcHQtYW5ndWxhci9yb3V0ZXJcIjtcblxuaW1wb3J0IHsgVGVyYXBpYXNDb21wb25lbnQgfSBmcm9tIFwiLi90ZXJhcGlhcy5jb21wb25lbnRcIjtcblxuY29uc3Qgcm91dGVzOiBSb3V0ZXMgPSBbXG4gICAgeyBwYXRoOiBcIlwiLCBjb21wb25lbnQ6IFRlcmFwaWFzQ29tcG9uZW50IH1cbl07XG5cbkBOZ01vZHVsZSh7XG4gICAgaW1wb3J0czogW05hdGl2ZVNjcmlwdFJvdXRlck1vZHVsZS5mb3JDaGlsZChyb3V0ZXMpXSxcbiAgICBleHBvcnRzOiBbTmF0aXZlU2NyaXB0Um91dGVyTW9kdWxlXVxufSlcbmV4cG9ydCBjbGFzcyBUZXJhcGlhc1JvdXRpbmdNb2R1bGUgeyB9XG4iLCJtb2R1bGUuZXhwb3J0cyA9IFwiPEFjdGlvbkJhcj5cXG4gICAgPCEtLVxcbiAgICBVc2UgdGhlIE5hdmlnYXRpb25CdXR0b24gYXMgYSBzaWRlLWRyYXdlciBidXR0b24gaW4gQW5kcm9pZFxcbiAgICBiZWNhdXNlIEFjdGlvbkl0ZW1zIGFyZSBzaG93biBvbiB0aGUgcmlnaHQgc2lkZSBvZiB0aGUgQWN0aW9uQmFyXFxuICAgIC0tPlxcbiAgICA8TmF2aWdhdGlvbkJ1dHRvbiBpb3M6dmlzaWJpbGl0eT1cXFwiY29sbGFwc2VkXFxcIiBpY29uPVxcXCJyZXM6Ly9tZW51XFxcIiAodGFwKT1cXFwib25EcmF3ZXJCdXR0b25UYXAoKVxcXCI+PC9OYXZpZ2F0aW9uQnV0dG9uPlxcbiAgICA8IS0tXFxuICAgIFVzZSB0aGUgQWN0aW9uSXRlbSBmb3IgSU9TIHdpdGggcG9zaXRpb24gc2V0IHRvIGxlZnQuIFVzaW5nIHRoZVxcbiAgICBOYXZpZ2F0aW9uQnV0dG9uIGFzIGEgc2lkZS1kcmF3ZXIgYnV0dG9uIGluIGlPUyBpcyBub3QgcG9zc2libGUsXFxuICAgIGJlY2F1c2UgaXRzIGZ1bmN0aW9uIGlzIHRvIGFsd2F5cyBuYXZpZ2F0ZSBiYWNrIGluIHRoZSBhcHBsaWNhdGlvbi5cXG4gICAgLS0+XFxuICAgIDxBY3Rpb25JdGVtIGljb249XFxcInJlczovL21lbnVcXFwiIGFuZHJvaWQ6dmlzaWJpbGl0eT1cXFwiY29sbGFwc2VkXFxcIiAodGFwKT1cXFwib25EcmF3ZXJCdXR0b25UYXAoKVxcXCJcXG4gICAgICAgIGlvcy5wb3NpdGlvbj1cXFwibGVmdFxcXCI+XFxuICAgIDwvQWN0aW9uSXRlbT5cXG4gICAgPExhYmVsIHRleHQ9XFxcIlRlcmFwaWFzXFxcIj48L0xhYmVsPlxcbjwvQWN0aW9uQmFyPlxcblxcbjxMaXN0VmlldyBbaXRlbXNdPVxcXCJ0ZXJhcGlhc1xcXCIgaW9zRXN0aW1hdGVkUm93SGVpZ2h0PVxcXCI2NVxcXCIgKHRhcCk9XFxcIm9uU2VsZWN0KCRldmVudClcXFwiPlxcbiAgICA8bmctdGVtcGxhdGUgbGV0LXRlcmFwaWE9XFxcIml0ZW1cXFwiIGxldC1pPVxcXCJpbmRleFxcXCI+XFxuICAgICAgICA8R3JpZExheW91dCByb3dzPVxcXCI0MCxhdXRvXFxcIiBjb2x1bW5zPVxcXCI1MCwqXFxcIj5cXG4gICAgICAgICAgICA8SW1hZ2UgW3NyY109XFxcInRlcmFwaWEuaW1nXFxcIj48L0ltYWdlPlxcbiAgICAgICAgICAgIDxMYWJlbCBbKG5nTW9kZWwpXT1cXFwicHJ1ZWJhXFxcIiBbdGV4dF09XFxcInRlcmFwaWEudGVyYXBpYVxcXCIgcm93PVxcXCIwXFxcIiBjb2w9XFxcIjFcXFwiPjwvTGFiZWw+XFxuICAgICAgICA8L0dyaWRMYXlvdXQ+XFxuICAgIDwvbmctdGVtcGxhdGU+XFxuPC9MaXN0Vmlldz5cXG5cIiIsImltcG9ydCB7IENvbXBvbmVudCwgT25Jbml0IH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcbmltcG9ydCB7IFJhZFNpZGVEcmF3ZXIgfSBmcm9tIFwibmF0aXZlc2NyaXB0LXVpLXNpZGVkcmF3ZXJcIjtcbmltcG9ydCAqIGFzIGFwcCBmcm9tIFwidG5zLWNvcmUtbW9kdWxlcy9hcHBsaWNhdGlvblwiO1xuaW1wb3J0IHsgVGVyYXBpYSB9IGZyb20gJ34vYXBwL3NoYXJlZC90ZXJhcGlhL3RlcmFwaWEubW9kZWwnXG5pbXBvcnQgeyBQYWdlIH0gZnJvbSBcInRucy1jb3JlLW1vZHVsZXMvdWkvcGFnZS9wYWdlXCI7XG5pbXBvcnQgeyBJdGVtRXZlbnREYXRhIH0gZnJvbSBcInRucy1jb3JlLW1vZHVsZXMvdWkvbGlzdC12aWV3L2xpc3Qtdmlld1wiO1xuXG5AQ29tcG9uZW50KHtcbiAgICBzZWxlY3RvcjogXCJUZXJhcGlhc1wiLFxuICAgIHRlbXBsYXRlVXJsOiBcIi4vdGVyYXBpYXMuY29tcG9uZW50Lmh0bWxcIlxufSlcbmV4cG9ydCBjbGFzcyBUZXJhcGlhc0NvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XG4gICAgdGVyYXBpYTogVGVyYXBpYTtcbiAgICBwcnVlYmEgPSAnJztcblxuICAgIHRlcmFwaWFzID0gW1xuICAgICAgICB7XG4gICAgICAgICAgICBpZFRlcmFwaWE6IDEsXG4gICAgICAgICAgICB0ZXJhcGlhOiBcIlJlc3BpcmFjacOzbiB5IHJlbGFqYWNpw7NuXCIsXG4gICAgICAgICAgICBpbWc6IFwifi9pbWFnZXMvcmVzcGlyYWNpb24uanBnXCJcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgICAgaWRUZXJhcGlhOiAyLFxuICAgICAgICAgICAgdGVyYXBpYTogXCJQcmVmb25hdG9yaW9zXCIsXG4gICAgICAgICAgICBpbWc6IFwifi9pbWFnZXMvcHJlZm9uYXRvcmlvcy5qcGdcIlxuICAgICAgICB9LFxuICAgICAgICB7XG4gICAgICAgICAgICBpZFRlcmFwaWE6IDMsXG4gICAgICAgICAgICB0ZXJhcGlhOiBcIlByYXhpYXMgb3JvZmFjaWFsZXNcIixcbiAgICAgICAgICAgIGltZzogXCJ+L2ltYWdlcy9wcmF4aWFzLmpwZ1wiXG4gICAgICAgIH0sXG4gICAgICAgIHtcbiAgICAgICAgICAgIHRlcmFwaWE6IFwiRWplcmNpY2lvcyBkZSBmb25lbWFzXCIsXG4gICAgICAgICAgICBpbWc6IFwifi9pbWFnZXMvZm9uZW1hcy5qcGdcIlxuICAgICAgICB9XG4gICAgXVxuXG4gICAgY29uc3RydWN0b3IoKSB7XG4gICAgICAgIHRoaXMudGVyYXBpYSA9IG5ldyBUZXJhcGlhKCk7XG4gICAgfVxuXG4gICAgbmdPbkluaXQoKTogdm9pZCB7XG4gICAgICAgIC8vIEluaXQgeW91ciBjb21wb25lbnQgcHJvcGVydGllcyBoZXJlLlxuICAgIH1cblxuICAgIG9uRHJhd2VyQnV0dG9uVGFwKCk6IHZvaWQge1xuICAgICAgICBjb25zdCBzaWRlRHJhd2VyID0gPFJhZFNpZGVEcmF3ZXI+YXBwLmdldFJvb3RWaWV3KCk7XG4gICAgICAgIHNpZGVEcmF3ZXIuc2hvd0RyYXdlcigpO1xuICAgIH1cblxuICAgIG9uU2VsZWN0KGFyZ3M6IEl0ZW1FdmVudERhdGEpIHtcblxuXG4gICAgfVxufVxuIiwiaW1wb3J0IHsgTmdNb2R1bGUsIE5PX0VSUk9SU19TQ0hFTUEgfSBmcm9tIFwiQGFuZ3VsYXIvY29yZVwiO1xuaW1wb3J0IHsgTmF0aXZlU2NyaXB0Q29tbW9uTW9kdWxlIH0gZnJvbSBcIm5hdGl2ZXNjcmlwdC1hbmd1bGFyL2NvbW1vblwiO1xuXG5pbXBvcnQgeyBUZXJhcGlhc1JvdXRpbmdNb2R1bGUgfSBmcm9tIFwiLi90ZXJhcGlhcy1yb3V0aW5nLm1vZHVsZVwiO1xuaW1wb3J0IHsgVGVyYXBpYXNDb21wb25lbnQgfSBmcm9tIFwiLi90ZXJhcGlhcy5jb21wb25lbnRcIjtcblxuQE5nTW9kdWxlKHtcbiAgICBpbXBvcnRzOiBbXG4gICAgICAgIE5hdGl2ZVNjcmlwdENvbW1vbk1vZHVsZSxcbiAgICAgICAgVGVyYXBpYXNSb3V0aW5nTW9kdWxlXG4gICAgXSxcbiAgICBkZWNsYXJhdGlvbnM6IFtcbiAgICAgICAgVGVyYXBpYXNDb21wb25lbnRcbiAgICBdLFxuICAgIHNjaGVtYXM6IFtcbiAgICAgICAgTk9fRVJST1JTX1NDSEVNQVxuICAgIF1cbn0pXG5leHBvcnQgY2xhc3MgVGVyYXBpYXNNb2R1bGUgeyB9XG4iXSwic291cmNlUm9vdCI6IiJ9

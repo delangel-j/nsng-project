@@ -15,7 +15,6 @@
     <Label text="Reporte de diagnósticos"></Label>
 </ActionBar>
 
-<ScrollView>
 <StackLayout>
 <GridLayout rows="0,20,20,20" columns="40,50,auto" class='paciente'>
     <Image row="1" col="1" class="nt-drawer__header-image fas t-36 p-t-5" src="font://&#xf2bd;"></Image>
@@ -48,14 +47,14 @@
       </Label>
       <Image src="res://down" class="icon" [ngClass]='{ collapse: isCollapsed2 }' (tap)="goCollapse2($event)"></Image>
   </FlexboxLayout>
-       <ListView [items]="listaPaciente" [visibility]= "showCollapseBox2 ? 'visible' : 'collapse'">
+       <ListView [items]="terapias" [visibility]= "showCollapseBox2 ? 'visible' : 'collapse'">
         <ng-template let-ter="item" >
             <StackLayout borderWidth="1">
-                <Label textWrap="true" [text]="ter.idPaciente"></Label>
-                <Label textWrap="true" [text]="ter.nombrePaciente"></Label>
-                <Label textWrap="true" [text]="ter.apellidoPaciente"></Label>
-                <Label textWrap="true" [text]="ter.edadPaciente"></Label>
-                <Label textWrap="true" [text]="ter.numero_expediente"></Label>
+                <Label textWrap="true" [text]="ter.terapia1"></Label>
+                <Label textWrap="true" [text]="ter.terapia2"></Label>
+                <Label textWrap="true" [text]="ter.terapia3"></Label>
+                <Label textWrap="true" [text]="ter.terapia4"></Label>
+                <Label textWrap="true" [text]="ter.terapia5"></Label>
             </StackLayout>
         </ng-template>
        </ListView>
@@ -79,13 +78,12 @@
      </Label>
      <Image src="res://down" class="icon" [ngClass]='{ collapse: isCollapsed4 }' (tap)="goCollapse4($event)"></Image>
 </FlexboxLayout>
-<ListView [items]="planTrabajo" [visibility]= "showCollapseBox4 ? 'visible' : 'collapse'">
-    <ng-template let-plan="item" >
-        <StackLayout borderWidth="1">
-            <Label textWrap="true" [text]="plan.plan1"></Label>
-            <Label textWrap="true" [text]="plan.plan2"></Label>
-        </StackLayout>
+<ListView [items]="listaPlanTrabajo" iosEstimatedRowHeight="65" class="lista" [visibility]= "showCollapseBox4 ? 'visible' : 'collapse'">
+    <ng-template let-plan="item" let-i="index">
+        <GridLayout rows="30" >
+            <Label textWrap="true" [text]="plan.indicacionesProcedimiento"></Label>
+        </GridLayout>
     </ng-template>
-   </ListView>
+</ListView>
 </StackLayout>
-</ScrollView>
+

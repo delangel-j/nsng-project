@@ -1,18 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
-import { Paciente } from "../shared/pacientes/paciente.model";
-import { PacienteService } from "../shared/pacientes/paciente.service";
+import { PlanTrabajoService } from "../shared/plan_trabajo/plan-trabajo.service"
+import { PlanTrabajo } from "../shared/plan_trabajo/plan-trabajo.model";
 
 @Component({
     selector: "Diagnosticos",
     templateUrl: "./diagnosticos.component.html",
     styleUrls : ["./diagnosticos.component.css" ],
-    providers: [PacienteService]
+    providers: [PlanTrabajoService]
 })
 export class DiagnosticosComponent implements OnInit {
 
-    listaPaciente: Array<Paciente> = [];
+    listaPlanTrabajo: Array<PlanTrabajo> = [];
 
     diagnosticos: {diagnostico1: string, diagnostico2: string, diagnostico3: string }[] = [
         {
@@ -28,12 +28,6 @@ export class DiagnosticosComponent implements OnInit {
             terapia3: '3. Ejercicios para fonemas /r/, /rr/, /l/, /ch/, /f/, /k/, /s/, intermedia',
             terapia4: '4. Trabajar aumento de vocabulario acorde a la edad y clasificación por campos semánticos. Hacer láminas con figuras de buen tamaño para que las aprenda a escribir',
             terapia5: '5. Trabajar estimulación de aspecto pragmático mediante cantos, juegos y cuentos.'
-        }
-    ]
-    planTrabajo: {plan1: string, plan2: string}[] = [
-        {
-            plan1: '1. Continuar terapia de lenguaje y aprendizaje semanal',
-            plan2: '2. Cita al terminar terapias'
         }
     ]
          public showCollapseBox = false;
@@ -85,15 +79,15 @@ export class DiagnosticosComponent implements OnInit {
                 this.isCollapsed4 = !this.isCollapsed4;
             }
         }
-    constructor(private pacienteService: PacienteService) {
+    constructor(private planTrabajoService: PlanTrabajoService) {
         // Use the component constructor to inject providers.
     }
 
     ngOnInit(): void {
-        this.pacienteService.obtenerPacientes()
-        .subscribe((fetchPaciente: []) => {
-            fetchPaciente.forEach((pacienteObject: Paciente) => {
-                this.listaPaciente.unshift(pacienteObject);
+        this.planTrabajoService.obtenerPlanTrabajo()
+        .subscribe((fetchPlanTrabajo: []) => {
+            fetchPlanTrabajo.forEach((planTrabajoObject: PlanTrabajo) => {
+                this.listaPlanTrabajo.unshift(planTrabajoObject);
             });
         });
     }

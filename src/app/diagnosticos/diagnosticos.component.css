@@ -24,4 +24,9 @@
     transform: rotate(270deg);
   }
 
+  .lista {
+      height: 300;
+      align-items: center;
+  }
+
 

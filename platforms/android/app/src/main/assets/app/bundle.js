@@ -48,13 +48,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: "", redirectTo: "/login", pathMatch: "full" },
-    { path: "login", loadChildren: function () { return Promise.all(/* import() */[__webpack_require__.e("vendor"), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, "./app/login/login.module.ts")).then(function (m) { return m.LoginModule; }); } },
-    { path: "home", loadChildren: function () { return __webpack_require__.e(/* import() */ 3).then(__webpack_require__.bind(null, "./app/home/home.module.ts")).then(function (m) { return m.HomeModule; }); } },
+    { path: "login", loadChildren: function () { return Promise.all(/* import() */[__webpack_require__.e("vendor"), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, "./app/login/login.module.ts")).then(function (m) { return m.LoginModule; }); } },
+    { path: "home", loadChildren: function () { return __webpack_require__.e(/* import() */ 2).then(__webpack_require__.bind(null, "./app/home/home.module.ts")).then(function (m) { return m.HomeModule; }); } },
     { path: "diagnosticos", loadChildren: function () { return __webpack_require__.e(/* import() */ 0).then(__webpack_require__.bind(null, "./app/diagnosticos/diagnosticos.module.ts")).then(function (m) { return m.DiagnosticosModule; }); } },
-    { path: "citas", loadChildren: function () { return Promise.all(/* import() */[__webpack_require__.e("vendor"), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, "./app/citas/citas.module.ts")).then(function (m) { return m.CitasModule; }); } },
-    { path: "progreso", loadChildren: function () { return __webpack_require__.e(/* import() */ 1).then(__webpack_require__.bind(null, "./app/progreso/progreso.module.ts")).then(function (m) { return m.ProgresoModule; }); } },
-    { path: "terapias", loadChildren: function () { return __webpack_require__.e(/* import() */ 6).then(__webpack_require__.bind(null, "./app/terapias/terapias.module.ts")).then(function (m) { return m.TerapiasModule; }); } },
-    { path: "notificaciones", loadChildren: function () { return __webpack_require__.e(/* import() */ 5).then(__webpack_require__.bind(null, "./app/notificaciones/notificaciones.module.ts")).then(function (m) { return m.NotificacionesModule; }); } },
+    { path: "citas", loadChildren: function () { return Promise.all(/* import() */[__webpack_require__.e("vendor"), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, "./app/citas/citas.module.ts")).then(function (m) { return m.CitasModule; }); } },
+    { path: "progreso", loadChildren: function () { return __webpack_require__.e(/* import() */ 6).then(__webpack_require__.bind(null, "./app/progreso/progreso.module.ts")).then(function (m) { return m.ProgresoModule; }); } },
+    { path: "terapias", loadChildren: function () { return __webpack_require__.e(/* import() */ 5).then(__webpack_require__.bind(null, "./app/terapias/terapias.module.ts")).then(function (m) { return m.TerapiasModule; }); } },
+    { path: "notificaciones", loadChildren: function () { return __webpack_require__.e(/* import() */ 4).then(__webpack_require__.bind(null, "./app/notificaciones/notificaciones.module.ts")).then(function (m) { return m.NotificacionesModule; }); } },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

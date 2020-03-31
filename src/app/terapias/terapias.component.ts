@@ -1,12 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
+import { Terapia } from '~/app/shared/terapia/terapia.model'
+import { Page } from "tns-core-modules/ui/page/page";
+import { ItemEventData } from "tns-core-modules/ui/list-view/list-view";
 
 @Component({
     selector: "Terapias",
     templateUrl: "./terapias.component.html"
 })
 export class TerapiasComponent implements OnInit {
+    terapia: Terapia;
+    prueba = '';
 
     terapias = [
         {
@@ -31,7 +36,7 @@ export class TerapiasComponent implements OnInit {
     ]
 
     constructor() {
-        // Use the component constructor to inject providers.
+        this.terapia = new Terapia();
     }
 
     ngOnInit(): void {
@@ -41,5 +46,10 @@ export class TerapiasComponent implements OnInit {
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
+    }
+
+    onSelect(args: ItemEventData) {
+
+
     }
 }
